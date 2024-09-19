@@ -1,4 +1,4 @@
-namespace Program.Items.Armaduras_o_Ropajes;
+namespace Library.Items.Armaduras_o_Ropajes;
 
 public class ArmaduraDeHierro
 {

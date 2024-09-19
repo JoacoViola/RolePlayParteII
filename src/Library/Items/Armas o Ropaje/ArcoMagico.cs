@@ -1,15 +1,15 @@
-namespace Library.Items.Armaduras_o_Ropajes;
+namespace Library.Items.Armas_o_Artefactos;
 
-public class TunicaDeCuero
+public class ArcoMagico
 {
     private int valorAtaque;
     private int valorDefensa;
     private int valorMagia;
    
     //Getters
-    public int GetDefense()
+    public int GetDamage()
     {
-        return this.valorDefensa;
+        return this.valorAtaque;
     }
     public int GetMagic()
     {
@@ -17,10 +17,10 @@ public class TunicaDeCuero
     }
     
     //Construtor
-    public TunicaDeCuero() 
+    public ArcoMagico() 
     {
-        this.valorAtaque = 0; 
+        this.valorAtaque = 60; 
         this.valorMagia = 20;
-        this.valorDefensa= 40;
+        this.valorDefensa= 0;
     }
 }
