@@ -1,22 +1,18 @@
 namespace Library.Items.Armas_o_Artefactos;
 
-public class HachaDeCombate
+public class HachaDeCombate : IItem
 {
-    private int valorAtaque;
-    private int valorDefensa;
-    private int valorMagia;
-   
-    //Getters
-    public int GetDamage() 
-    {
-        return this.valorAtaque;
-    }
+    public int ValorAtaque { get; }
+    public int ValorDefensa { get; }
+    public int ValorMagia { get; }
     
     //Construtor
     public HachaDeCombate() 
     {
-        this.valorAtaque = 75; 
-        this.valorMagia = 0;
-        this.valorDefensa= 0;
+        this.ValorAtaque = 75; 
+        this.ValorMagia = 0;
+        this.ValorDefensa= 0;
     }
+
+ 
 }

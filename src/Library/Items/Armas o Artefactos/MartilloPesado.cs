@@ -1,26 +1,18 @@
 namespace Library.Items.Armas_o_Artefactos;
 
-public class MartilloPesado
+public class MartilloPesado : IItem
 {
-    private int valorAtaque;
-    private int valorDefensa;
-    private int valorMagia;
-   
-    //Getters
-    public int GetDamage() 
-    {
-        return this.valorAtaque;
-    }
-    public int GetDefense()
-    {
-        return this.valorDefensa;
-    }
+    public int ValorAtaque { get; }
+    public int ValorDefensa { get; }
+    public int ValorMagia { get; }
     
     //Construtor
     public MartilloPesado() 
     {
-        this.valorAtaque = 90; 
-        this.valorMagia = 0;
-        this.valorDefensa= 20;
+        this.ValorAtaque = 90; 
+        this.ValorMagia = 0;
+        this.ValorDefensa= 20;
     }
+
+    
 }

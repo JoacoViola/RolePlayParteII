@@ -1,111 +1,86 @@
 ﻿using System.Collections;
+using Library.Items;
 using Library.Items.Armaduras_o_Ropajes;
 using Library.Items.Armas_o_Artefactos;
 namespace Library.Personajes;
 
-public class Enano
+public class Enano : IPersonaje
 {
-    private string nombre;
-    private int valorVida;
-    private ArrayList items;
-    private int valorMagia;
-    private int valorAtaque;
-    private int valorDefensa;
+    public string Nombre { get; set; }
+    public int ValorVida { get; set; }
+    public int ValorAtaque { get; set; }
+    public int ValorDefensa { get; set; }
+    public int ValorMagia { get; set; }
+    public IList<IItem> Inventario { get; }
     
     //Constructor
     public Enano(string nombreDelEnano)
     {
-        this.nombre = nombreDelEnano;
-        this.valorVida = 230;
-        this.items = new ArrayList();
-        this.valorMagia = 0;
-        this.valorAtaque = 25;
-        this.valorDefensa = 30;
+        this.Nombre = nombreDelEnano;
+        this.ValorVida = 230;
+        this.ValorMagia = 0;
+        this.ValorAtaque = 25;
+        this.ValorDefensa = 30;
     }
 
-    //Getters del personaje
-    public string GetName()
-    {
-        return this.nombre;
-    }
-    public int GetHealth()
-    {
-        return this.valorVida;
-    }
-    public int GetMagic()
-    {
-        return this.valorMagia;
-    }
-    public int GetDamage()
-    {
-        return this.valorAtaque;
-    }
-    public int GetDefense()
-    {
-        return this.valorDefensa;
-    }
-    public int GetItemCount()
-    {
-        return items.Count;
-    }
     //Ser atacado
     public void SufrirDaño(int daño)
     {
-        daño -= this.valorDefensa / 5;
-        this.valorVida -= daño; 
+        daño -= this.ValorDefensa / 5;
+        this.ValorVida -= daño; 
     }
 
     //Ser curado
     public void RecuperarVida(int vida)
     {
-        this.valorVida += vida;
+        this.ValorVida += vida;
     }
 
    //Agregar Items al Inventario
     public void AgregarHachaDeCombate(HachaDeCombate hacha)
     {
-        this.items.Add(hacha);
-        this.valorAtaque += hacha.GetDamage();
+        this.Inventario.Add(hacha);
+        this.ValorAtaque += hacha.ValorAtaque;
     }
     public void AgregarMartilloPesado(MartilloPesado martillo)
     {
-        this.items.Add(martillo);
-        this.valorAtaque += martillo.GetDamage();
-        this.valorDefensa += martillo.GetDefense();
+        this.Inventario.Add(martillo);
+        this.ValorAtaque += martillo.ValorAtaque;
+        this.ValorDefensa += martillo.ValorDefensa;
     }
     public void AgregarArmaduraDeHierro(ArmaduraDeHierro armadura)
     {
-        this.items.Add(armadura);
-        this.valorDefensa += armadura.GetDefense();
+        this.Inventario.Add(armadura);
+        this.ValorDefensa += armadura.ValorDefensa;
     }
     
     //Remover Items del Inventario
     public void QuitarHachaDeCombate(HachaDeCombate hacha)
     {
-        int aux = this.items.IndexOf(hacha);
+        int aux = this.Inventario.IndexOf(hacha);
         if (aux != 1)
         {
-            this.items.Remove(hacha);
-            this.valorAtaque -= hacha.GetDamage();
+            this.Inventario.Remove(hacha);
+            this.ValorAtaque -= hacha.ValorAtaque;
         }
     }
     public void QuitarMartilloPesado(MartilloPesado martillo)
     {
-        int aux = this.items.IndexOf(martillo);
+        int aux = this.Inventario.IndexOf(martillo);
         if (aux != 1)
         {
-            this.items.Remove(martillo);
-            this.valorAtaque -= martillo.GetDamage();
-            this.valorDefensa -= martillo.GetDefense();
+            this.Inventario.Remove(martillo);
+            this.ValorAtaque -= martillo.ValorAtaque;
+            this.ValorDefensa -= martillo.ValorDefensa;
         }
     }
     public void QuitarArmaduraDeHierro(ArmaduraDeHierro armadura)
     {
-        int aux = this.items.IndexOf(armadura);
+        int aux = this.Inventario.IndexOf(armadura);
         if (aux != 1)
         {
-            this.items.Remove(armadura);
-            this.valorDefensa -= armadura.GetDefense();
+            this.Inventario.Remove(armadura);
+            this.ValorDefensa -= armadura.ValorDefensa;
         }
     }
 }

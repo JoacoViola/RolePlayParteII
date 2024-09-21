@@ -1,22 +1,18 @@
 namespace Library.Items.Armaduras_o_Ropajes;
 
-public class ArmaduraDeHierro
+public class ArmaduraDeHierro : IItem
 {
-    private int valorAtaque;
-    private int valorDefensa;
-    private int valorMagia;
-   
-    //Getters
-    public int GetDefense() 
-    {
-        return this.valorDefensa;
-    }
+    public int ValorAtaque { get; }
+    public int ValorDefensa { get; }
+    public int ValorMagia { get; }
     
     //Construtor
     public ArmaduraDeHierro() 
     {
-        this.valorAtaque = 0; 
-        this.valorMagia = 0;
-        this.valorDefensa= 80;
+        this.ValorAtaque = 0; 
+        this.ValorMagia = 0;
+        this.ValorDefensa= 80;
     }
+
+    
 }
