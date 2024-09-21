@@ -1,6 +1,7 @@
-using Program.Items.Armaduras_o_Ropajes;
-using Program.Items.Armas_o_Artefactos;
-using Program.Personajes;
+using Library.Items.Armaduras_o_Ropajes;
+using Library.Items.Armas_o_Artefactos;
+using Library.Personajes;
+using NUnit.Framework;
 namespace UnitTests;
 
 public class TestMago

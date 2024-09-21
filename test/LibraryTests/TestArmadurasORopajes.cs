@@ -1,4 +1,5 @@
-using Program.Items.Armaduras_o_Ropajes;
+using Library.Items.Armaduras_o_Ropajes;
+using NUnit.Framework;
 namespace UnitTests;
 
 public class TestArmadurasORopajes

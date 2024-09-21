@@ -1,25 +1,28 @@
-﻿using Ucu.Poo.RoleplayGame;
+﻿using Library.Items.Armaduras_o_Ropajes;
+using Library.Items.Armas_o_Artefactos;
+using Library.Personajes;
 
-SpellsBook book = new SpellsBook();
-book.Spells = new Spell[]{ new Spell() };
+LibroDeHechizos book = new LibroDeHechizos();
+book.AgregarHechizo("Relámpago");
 
-Wizard gandalf = new Wizard("Gandalf");
-gandalf.Staff = new Staff();
-gandalf.SpellsBook = book;
+Mago gandalf = new Mago("Gandalf");
+gandalf.AgregarBastonMagico(new BastonMagico());
+gandalf.AgregarLibroDeHechizos(book);
 
-Dwarf gimli = new Dwarf("Gimli");
-gimli.Axe = new Axe();
-gimli.Helmet = new Helmet();
-gimli.Shield = new Shield();
+Enano gimli = new Enano("Gimli");
+gimli.AgregarMartilloPesado(new MartilloPesado());
+gimli.AgregarHachaDeCombate(new HachaDeCombate());
+gimli.AgregarArmaduraDeHierro(new ArmaduraDeHierro());
 
-Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
-Console.WriteLine($"Gandalf attacks Gimli with ⚔️ {gandalf.AttackValue}");
 
-gimli.ReceiveAttack(gandalf.AttackValue);
+Console.WriteLine($"Gimli has ❤️ {gimli.GetHealth()}");
+Console.WriteLine($"Gandalf attacks Gimli with ⚔️ {gandalf.GetDamage()}");
 
-Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
+gimli.SufrirDaño(gandalf.GetDamage());
 
-gimli.Cure();
+Console.WriteLine($"Gimli has ❤️ {gimli.GetHealth()}");
 
-Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
+gimli.RecuperarVida(50);
+
+Console.WriteLine($"Gimli has ❤️ {gimli.GetHealth()}");
 
