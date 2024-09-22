@@ -3,7 +3,7 @@ using Library.Items.Armas_o_Artefactos;
 using Library.Personajes;
 
 LibroDeHechizos book = new LibroDeHechizos();
-book.AgregarHechizo("Relámpago");
+book.AgregarHechizo(new Hechizo("Relámpago", 20));
 
 Mago gandalf = new Mago("Gandalf");
 gandalf.AgregarBastonMagico(new BastonMagico());
@@ -22,7 +22,7 @@ gimli.SufrirDaño(gandalf.ValorAtaque);
 
 Console.WriteLine($"Gimli has ❤️ {gimli.ValorVida}");
 
-gimli.RecuperarVida(50);
+gimli.RecuperarVida(74);
 
 Console.WriteLine($"Gimli has ❤️ {gimli.ValorVida}");
 

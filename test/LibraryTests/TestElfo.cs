@@ -10,7 +10,7 @@ public class TestElfo
     [Test]
     public void TestDeConstructorYGetters()
     {
-        Elfo elfo = new Elfo("Sylvan", new List<IItem>());
+        Elfo elfo = new Elfo("Sylvan");
         Assert.That(elfo.Nombre, Is.EqualTo("Sylvan"));
         Assert.That(elfo.ValorVida, Is.EqualTo(200));
         Assert.That(elfo.ValorMagia, Is.EqualTo(10));
@@ -21,7 +21,7 @@ public class TestElfo
     [Test]
     public void ElfoAtacadoYCurado()
     {
-        Elfo elfo = new Elfo("Sylvan", new List<IItem>());
+        Elfo elfo = new Elfo("Sylvan");
         elfo.SufrirDaño(50);
         Assert.That(elfo.ValorVida, Is.EqualTo(155)); // le resta 45 por la defensa
         elfo.RecuperarVida(20);
@@ -31,7 +31,7 @@ public class TestElfo
     [Test]
     public void AgregarYQuitarArcoMagico()
     {
-        Elfo elfo = new Elfo("Sylvan", new List<IItem>());
+        Elfo elfo = new Elfo("Sylvan");
         ArcoMagico arco = new ArcoMagico();
         elfo.AgregarArcoMagico(arco);
         Assert.That(elfo.ValorMagia, Is.EqualTo(30));   // le suma 20 
@@ -47,7 +47,7 @@ public class TestElfo
     [Test]
     public void AgregarYQuitarCuchillasDobles()
     {
-        Elfo elfo = new Elfo("Sylvan", new List<IItem>());
+        Elfo elfo = new Elfo("Sylvan");
         CuchillasDobles cuchilla = new CuchillasDobles();
         elfo.AgregarCuchillasDoble(cuchilla);
         Assert.That(elfo.ValorMagia, Is.EqualTo(10));   // no deberia cambiar 
@@ -63,7 +63,7 @@ public class TestElfo
     [Test]
     public void AgregarYQuitarArmaduraDelBosque()
     {
-        Elfo elfo = new Elfo("Sylvan", new List<IItem>());
+        Elfo elfo = new Elfo("Sylvan");
         ArmaduraDelBosque armadura = new ArmaduraDelBosque();
         elfo.AgregarArmaduraDelBosque(armadura);
         Assert.That(elfo.ValorMagia, Is.EqualTo(20));   // le suma 10 

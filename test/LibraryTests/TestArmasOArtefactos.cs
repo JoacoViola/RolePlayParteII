@@ -22,9 +22,10 @@ public class TestArmasOArtefactos
     public void LibroDeHechizos_AgragarYQuitarHechizo()
     {
         LibroDeHechizos libro = new LibroDeHechizos();
-        libro.AgregarHechizo("Escupitajus Pegajosus");
+        Hechizo escupitajo = new Hechizo("Escupitajus Pegajosus", 5);
+        libro.AgregarHechizo(escupitajo);
         Assert.That(libro.GetNumeroHechizos(), Is.EqualTo(1));
-        libro.QuitarHechizo("Escupitajus Pegajosus");
+        libro.QuitarHechizo(escupitajo);
         Assert.That(libro.GetNumeroHechizos(), Is.EqualTo(0));
     }
 

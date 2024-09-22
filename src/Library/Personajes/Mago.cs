@@ -10,7 +10,7 @@ public class Mago : IPersonaje
     public int ValorMagia { get; set; }
     public int ValorAtaque { get; set; }
     public int ValorDefensa { get; set; }
-    public IList<IItem> Inventario { get; }
+    public List<IItem> Inventario { get; }
 
     //Constructor
     public Mago(string nombreDelMago)
@@ -47,9 +47,9 @@ public class Mago : IPersonaje
     public void AgregarLibroDeHechizos(LibroDeHechizos libro)
     {
         this.Inventario.Add(libro);
-        this.ValorMagia += 2 * (libro.GetNumeroHechizos());
-        this.ValorAtaque += 2 * (libro.GetNumeroHechizos());
-        this.ValorDefensa += libro.GetNumeroHechizos();
+        this.ValorMagia += libro.ValorMagia; 
+        this.ValorAtaque += libro.ValorMagia;
+        this.ValorDefensa += libro.ValorMagia/2; 
     }
     public void AgregarTunicaDeCuero(TunicaDeCuero tunica)
     {
@@ -78,9 +78,9 @@ public class Mago : IPersonaje
         if (aux != 1)
         {
             this.Inventario.Remove(libro);
-            this.ValorMagia -= 2 * (libro.GetNumeroHechizos());
-            this.ValorAtaque -= 2 * (libro.GetNumeroHechizos());
-            this.ValorDefensa -= libro.GetNumeroHechizos();
+            this.ValorMagia -= libro.ValorMagia; 
+            this.ValorAtaque -= libro.ValorMagia;
+            this.ValorDefensa -= libro.ValorMagia/2; 
         }
     }
     public void QuitarTunicaDeCuero(TunicaDeCuero tunica)

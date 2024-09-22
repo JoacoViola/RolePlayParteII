@@ -48,15 +48,15 @@ public class TestMago
     {
         Mago mago = new Mago("Harry Potter");
         LibroDeHechizos libro = new LibroDeHechizos();
-        libro.AgregarHechizo("Aturdir"); 
-        libro.AgregarHechizo("Incinerar");
-        libro.AgregarHechizo("Congelar");
-        libro.AgregarHechizo("Clonar");
-        libro.AgregarHechizo("Sepultar");
+        libro.AgregarHechizo(new Hechizo("Aturdir", 10)); 
+        libro.AgregarHechizo(new Hechizo("Incinerar", 13));
+        libro.AgregarHechizo(new Hechizo("Congelar", 10));
+        libro.AgregarHechizo(new Hechizo("Clonar", 2));
+        libro.AgregarHechizo(new Hechizo("Sepultar", 5));
         mago.AgregarLibroDeHechizos(libro);
-        Assert.That(mago.ValorMagia, Is.EqualTo(35));   // le suma 10 (2 por cada hechizo)
-        Assert.That(mago.ValorAtaque, Is.EqualTo(45));  // le suma 10 (magia)
-        Assert.That(mago.ValorDefensa, Is.EqualTo(27)); // le suma 5 (mitad de la magia)
+        Assert.That(mago.ValorMagia, Is.EqualTo(65));   // le suma 40 (total por cada hechizo)
+        Assert.That(mago.ValorAtaque, Is.EqualTo(75));  // le suma 40 (magia)
+        Assert.That(mago.ValorDefensa, Is.EqualTo(42)); // le suma 20 (mitad de la magia)
         mago.QuitarLibroHechizos(libro);
         Assert.That(mago.Inventario.Count, Is.EqualTo(0)); // el inventario queda vacío
         Assert.That(mago.ValorMagia, Is.EqualTo(25));   // vuelve al valor inicial

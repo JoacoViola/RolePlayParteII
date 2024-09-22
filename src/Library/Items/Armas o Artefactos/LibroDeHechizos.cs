@@ -5,9 +5,9 @@ public class LibroDeHechizos : IItem
 {
     public int ValorAtaque { get; }
     public int ValorDefensa { get; }
-    public int ValorMagia { get; }
+    public int ValorMagia { get; set; }
     
-    private ArrayList listaDeHechizos;
+    private List<Hechizo> listaDeHechizos;
     
     //Getters
     public int GetNumeroHechizos()
@@ -16,29 +16,29 @@ public class LibroDeHechizos : IItem
     }
 
     //Agregar Hechizo al Libro
-    public void AgregarHechizo(string nombreHechizo)
+    public void AgregarHechizo(Hechizo unHechizo)
     {
-        this.listaDeHechizos.Add(nombreHechizo);
+        this.listaDeHechizos.Add(unHechizo);        // Ahora el libro de hechizos tiene tanta Magia como la suma 
+        this.ValorMagia += unHechizo.ValorMagia;    // del ValorMagia de cada uno de los hechizos que contiene
     }
     
     //Quitar Hechizo al Libro
-    public void QuitarHechizo(string nombreHechizo)
+    public void QuitarHechizo(Hechizo unHechizo)
     {
-        int aux = this.listaDeHechizos.IndexOf(nombreHechizo);
+        int aux = this.listaDeHechizos.IndexOf(unHechizo);
         if (aux != 1)
         {
-            this.listaDeHechizos.Remove(nombreHechizo);
+            this.listaDeHechizos.Remove(unHechizo);     // Cada vez que se remueve un hechizo del libro, el libro
+            this.ValorMagia -= unHechizo.ValorMagia;    // pierde la cantidad de magia que le sumaba ese hechizo
         } 
     }
     
     //Constructor
     public LibroDeHechizos()
     {
-        this.listaDeHechizos = new ArrayList();
+        this.listaDeHechizos = new List<Hechizo>();
         this.ValorAtaque = 0; 
         this.ValorDefensa= 0;
-        this.ValorMagia = 0;
+        this.ValorMagia = 0;    // Por defecto, estando vacío, no contiene magia
     }
-
-   
 }

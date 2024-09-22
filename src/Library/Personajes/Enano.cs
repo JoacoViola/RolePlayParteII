@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using Library.Items;
+﻿using Library.Items;
 using Library.Items.Armaduras_o_Ropajes;
 using Library.Items.Armas_o_Artefactos;
 namespace Library.Personajes;
@@ -11,7 +10,7 @@ public class Enano : IPersonaje
     public int ValorAtaque { get; set; }
     public int ValorDefensa { get; set; }
     public int ValorMagia { get; set; }
-    public IList<IItem> Inventario { get; }
+    public List<IItem> Inventario { get; }
     
     //Constructor
     public Enano(string nombreDelEnano)

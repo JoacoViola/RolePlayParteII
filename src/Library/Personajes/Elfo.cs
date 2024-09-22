@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using Library.Items;
+﻿using Library.Items;
 using Library.Items.Armaduras_o_Ropajes;
 using Library.Items.Armas_o_Artefactos;
 namespace Library.Personajes;
@@ -8,16 +7,15 @@ public class Elfo : IPersonaje
 {
     public string Nombre{ get; set; }
     public int ValorVida{ get; set; }
-    public IList<IItem> Inventario{ get; }
+    public List<IItem> Inventario{ get; }
     public int ValorMagia{ get; set; }
     public int ValorAtaque{ get; set; }
     public int ValorDefensa{ get; set; }
     
     //Constructor
-    public Elfo(string nombreDelElfo, IList<IItem> inventario)
+    public Elfo(string nombreDelElfo)
     {
         this.Nombre = nombreDelElfo;
-        Inventario = inventario;
         this.ValorVida = 200;
         this.ValorMagia = 10;
         this.ValorAtaque = 15 + ValorMagia;

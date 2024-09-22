@@ -8,7 +8,7 @@ public interface IPersonaje
     int ValorAtaque { get; set; }
     int ValorDefensa { get; set; }
     int ValorMagia { get; set; }
-    IList<IItem> Inventario { get; }
+    List<IItem> Inventario { get; }
     void SufrirDaño(int daño);
     void RecuperarVida(int vida);
     
