@@ -53,7 +53,7 @@ public class Mago : IPersonaje
     public void AgregarTunicaDeCuero(TunicaDeCuero tunica)
     {
         this.Inventario.Add(tunica);
-        this.ValorDefensa += tunica.ValorDefensa();
+        this.ValorDefensa += tunica.ValorDefensa;
         this.ValorMagia += tunica.ValorMagia;
         this.ValorAtaque += tunica.ValorMagia;
         this.ValorDefensa += tunica.ValorMagia/2;

@@ -8,7 +8,7 @@ public class TestArmasOArtefactos
     public void BastonMagico_ConstructorYGetters()
     {
         BastonMagico baston = new BastonMagico();
-        Assert.That(baston.GetMagic(), Is.EqualTo(70));
+        Assert.That(baston.ValorMagia, Is.EqualTo(70));
     }
 
     [Test]
@@ -32,29 +32,29 @@ public class TestArmasOArtefactos
     public void ArcoMagico_ConstructorYGetters()
     {
         ArcoMagico arco = new ArcoMagico();
-        Assert.That(arco.GetDamage(), Is.EqualTo(60));
-        Assert.That(arco.GetMagic(), Is.EqualTo(20));
+        Assert.That(arco.ValorAtaque, Is.EqualTo(60));
+        Assert.That(arco.ValorMagia, Is.EqualTo(20));
     }
 
     [Test]
     public void CuchillasDobles_ConstructorYGetters()
     {
         CuchillasDobles cuchillas = new CuchillasDobles();
-        Assert.That(cuchillas.GetDamage(), Is.EqualTo(65));
+        Assert.That(cuchillas.ValorAtaque, Is.EqualTo(65));
     }
 
     [Test]
     public void HachaDeCombate_ConstructorYGetters()
     {
         HachaDeCombate hacha = new HachaDeCombate();
-        Assert.That(hacha.GetDamage(), Is.EqualTo(75));
+        Assert.That(hacha.ValorAtaque, Is.EqualTo(75));
     }
 
     [Test]
     public void MartilloPesado_ConstructorYGetters()
     {
         MartilloPesado martillo = new MartilloPesado();
-        Assert.That(martillo.GetDamage(), Is.EqualTo(90));
-        Assert.That(martillo.GetDefense(), Is.EqualTo(20));
+        Assert.That(martillo.ValorAtaque, Is.EqualTo(90));
+        Assert.That(martillo.ValorDefensa, Is.EqualTo(20));
     }
 }
