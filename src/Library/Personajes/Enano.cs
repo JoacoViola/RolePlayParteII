@@ -6,7 +6,7 @@ namespace Library.Personajes;
 
 public class Enano : IPersonaje
 {
-    public string Nombre { get; set; }
+    public string Nombre{ get; set; }
     public int ValorVida { get; set; }
     public int ValorAtaque { get; set; }
     public int ValorDefensa { get; set; }

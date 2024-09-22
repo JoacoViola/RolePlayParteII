@@ -1,22 +1,19 @@
 namespace Library.Items.Armas_o_Artefactos;
 
-public class CuchillasDobles
+public class CuchillasDobles : IItem
 {
-    private int valorAtaque;
-    private int valorDefensa;
-    private int valorMagia;
-   
-    //Getters
-    public int GetDamage() 
-    {
-        return this.valorAtaque;
-    }
+    public int ValorAtaque { get; }
+    public int ValorDefensa { get; }
+    public int ValorMagia { get; }
+    
     
     //Construtor
     public CuchillasDobles() 
     {
-        this.valorAtaque = 65; 
-        this.valorMagia = 0;
-        this.valorDefensa= 0;
+        this.ValorAtaque = 65; 
+        this.ValorMagia = 0;
+        this.ValorDefensa= 0;
     }
+
+    
 }

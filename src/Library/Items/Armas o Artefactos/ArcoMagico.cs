@@ -1,26 +1,19 @@
 namespace Library.Items.Armas_o_Artefactos;
 
-public class ArcoMagico
+public class ArcoMagico : IItem
 {
-    private int valorAtaque;
-    private int valorDefensa;
-    private int valorMagia;
-   
-    //Getters
-    public int GetDamage()
-    {
-        return this.valorAtaque;
-    }
-    public int GetMagic()
-    {
-        return this.valorMagia;
-    }
+    public int ValorAtaque { get; }
+    public int ValorDefensa { get; }
+    public int ValorMagia { get; }
+    
     
     //Construtor
     public ArcoMagico() 
     {
-        this.valorAtaque = 60; 
-        this.valorMagia = 20;
-        this.valorDefensa= 0;
+        this.ValorAtaque = 60; 
+        this.ValorMagia = 20;
+        this.ValorDefensa= 0;
     }
+
+    
 }

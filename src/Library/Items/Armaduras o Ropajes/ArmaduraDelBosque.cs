@@ -1,26 +1,19 @@
 namespace Library.Items.Armaduras_o_Ropajes;
 
-public class ArmaduraDelBosque
+public class ArmaduraDelBosque : IItem
 {
-    private int valorAtaque;
-    private int valorDefensa;
-    private int valorMagia;
-   
-    //Getters
-    public int GetDefense() 
-    {
-        return this.valorDefensa;
-    }
-    public int GetMagic() 
-    {
-        return this.valorMagia;
-    }
+    public int ValorAtaque { get; }
+    public int ValorDefensa { get; }
+    public int ValorMagia { get; }
+    
     
     //Construtor
     public ArmaduraDelBosque() 
     {
-        this.valorAtaque = 0; 
-        this.valorMagia = 10;
-        this.valorDefensa= 55;
+        this.ValorAtaque = 0; 
+        this.ValorMagia = 10;
+        this.ValorDefensa= 55;
     }
+
+    
 }
