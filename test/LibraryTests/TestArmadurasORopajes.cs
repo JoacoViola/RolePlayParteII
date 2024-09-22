@@ -9,7 +9,7 @@ public class TestArmadurasORopajes
     {
         TunicaDeCuero tunica = new TunicaDeCuero();
         Assert.That(tunica.GetMagic(), Is.EqualTo(20));
-        Assert.That(tunica.GetDefense(), Is.EqualTo(40));
+        Assert.That(tunica.ValorDefensa(), Is.EqualTo(40));
     }
     
     [Test]
