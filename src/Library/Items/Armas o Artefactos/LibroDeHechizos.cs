@@ -1,8 +1,12 @@
 using System.Collections;
 namespace Library.Items.Armas_o_Artefactos;
 
-public class LibroDeHechizos
+public class LibroDeHechizos : IItem
 {
+    public int ValorAtaque { get; }
+    public int ValorDefensa { get; }
+    public int ValorMagia { get; }
+    
     private ArrayList listaDeHechizos;
     
     //Getters
@@ -31,5 +35,10 @@ public class LibroDeHechizos
     public LibroDeHechizos()
     {
         this.listaDeHechizos = new ArrayList();
+        this.ValorAtaque = 0; 
+        this.ValorDefensa= 0;
+        this.ValorMagia = 0;
     }
+
+   
 }

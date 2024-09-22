@@ -1,26 +1,16 @@
 namespace Library.Items.Armaduras_o_Ropajes;
 
-public class TunicaDeCuero
+public class TunicaDeCuero : IItem
 {
-    private int valorAtaque;
-    private int valorDefensa;
-    private int valorMagia;
-   
-    //Getters
-    public int GetDefense()
-    {
-        return this.valorDefensa;
-    }
-    public int GetMagic()
-    {
-        return this.valorMagia;
-    }
+    public int ValorAtaque { get; }
+    public int ValorDefensa { get; }
+    public int ValorMagia { get; }
     
     //Construtor
     public TunicaDeCuero() 
     {
-        this.valorAtaque = 0; 
-        this.valorMagia = 20;
-        this.valorDefensa= 40;
+        this.ValorAtaque = 0; 
+        this.ValorMagia = 20;
+        this.ValorDefensa= 40;
     }
 }

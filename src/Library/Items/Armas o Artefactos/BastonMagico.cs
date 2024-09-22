@@ -1,22 +1,16 @@
 namespace Library.Items.Armas_o_Artefactos;
 
-public class BastonMagico
+public class BastonMagico : IItem
 {
-    private int valorAtaque;
-    private int valorDefensa;
-    private int valorMagia;
-   
-    //Getters
-    public int GetMagic()
-    {
-        return this.valorMagia;
-    }
-    
+    public int ValorAtaque { get; }
+    public int ValorDefensa { get;  }
+    public int ValorMagia { get; }
+
     //Construtor
     public BastonMagico()
     {
-        this.valorAtaque = 0; 
-        this.valorDefensa= 0;
-        this.valorMagia = 70;
+        this.ValorAtaque = 0; 
+        this.ValorDefensa= 0;
+        this.ValorMagia = 70;
     }
 }

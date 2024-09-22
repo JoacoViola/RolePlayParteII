@@ -1,124 +1,97 @@
-﻿using System.Collections;
+﻿using Library.Items;
 using Library.Items.Armaduras_o_Ropajes;
 using Library.Items.Armas_o_Artefactos;
 namespace Library.Personajes;
 
-public class Mago
+public class Mago : IPersonaje
 {
-    private string nombre;
-    private int valorVida;
-    private ArrayList items;
-    private int valorMagia;
-    private int valorAtaque;
-    private int valorDefensa;
-    
+    public string Nombre { get; set; }
+    public int ValorVida { get; set; }
+    public int ValorMagia { get; set; }
+    public int ValorAtaque { get; set; }
+    public int ValorDefensa { get; set; }
+    public IList<IItem> Inventario { get; }
+
     //Constructor
     public Mago(string nombreDelMago)
     {
-        this.nombre = nombreDelMago;
-        this.valorVida = 170;
-        this.items = new ArrayList();
-        this.valorMagia = 25;
-        this.valorAtaque = 10 + valorMagia;
-        this.valorDefensa = 10 + valorMagia/2;
+        this.Nombre = nombreDelMago;
+        this.ValorVida = 170;
+        this.ValorMagia = 25;
+        this.ValorAtaque = 10 + ValorMagia;
+        this.ValorDefensa = 10 + ValorMagia/2;
     }
-
-    //Getters del personaje
-    public string GetName()
-    {
-        return this.nombre;
-    }
-    public int GetHealth()
-    {
-        return this.valorVida;
-    }
-    public int GetMagic()
-    {
-        return this.valorMagia;
-    }
-    public int GetDamage()
-    {
-        return this.valorAtaque;
-    }
-    public int GetDefense()
-    {
-        return this.valorDefensa;
-    }
-    public int GetItemCount()
-    {
-        return items.Count;
-    }
-
+    
     //Ser atacado
     public void SufrirDaño(int daño)
     {
-        daño -= this.valorDefensa / 5;
-        this.valorVida -= daño; 
+        daño -= this.ValorDefensa / 5;
+        this.ValorVida -= daño; 
     }
 
     //Ser curado
     public void RecuperarVida(int vida)
     {
-        this.valorVida += vida;
+        this.ValorVida += vida;
     }
 
    //Agregar Items al Inventario
     public void AgregarBastonMagico(BastonMagico baston)
     {
-        this.items.Add(baston);
-        this.valorMagia += baston.GetMagic();
-        this.valorAtaque += baston.GetMagic();
-        this.valorDefensa += baston.GetMagic()/2;
+        this.Inventario.Add(baston);
+        this.ValorMagia += baston.ValorMagia;
+        this.ValorAtaque += baston.ValorMagia;
+        this.ValorDefensa += baston.ValorMagia/2;
     }
     public void AgregarLibroDeHechizos(LibroDeHechizos libro)
     {
-        this.items.Add(libro);
-        this.valorMagia += 2 * (libro.GetNumeroHechizos());
-        this.valorAtaque += 2 * (libro.GetNumeroHechizos());
-        this.valorDefensa += libro.GetNumeroHechizos();
+        this.Inventario.Add(libro);
+        this.ValorMagia += 2 * (libro.GetNumeroHechizos());
+        this.ValorAtaque += 2 * (libro.GetNumeroHechizos());
+        this.ValorDefensa += libro.GetNumeroHechizos();
     }
     public void AgregarTunicaDeCuero(TunicaDeCuero tunica)
     {
-        this.items.Add(tunica);
-        this.valorDefensa += tunica.GetDefense();
-        this.valorMagia += tunica.GetMagic();
-        this.valorAtaque += tunica.GetMagic();
-        this.valorDefensa += tunica.GetMagic()/2;
+        this.Inventario.Add(tunica);
+        this.ValorDefensa += tunica.ValorDefensa();
+        this.ValorMagia += tunica.ValorMagia;
+        this.ValorAtaque += tunica.ValorMagia;
+        this.ValorDefensa += tunica.ValorMagia/2;
     }
     
     //Remover Items del Inventario
     public void QuitarBastonMagico(BastonMagico baston)
     {
-        int aux = this.items.IndexOf(baston);
+        int aux = this.Inventario.IndexOf(baston);
         if (aux != 1)
         {
-            this.items.Remove(baston);
-            this.valorMagia -= baston.GetMagic();
-            this.valorAtaque -= (baston.GetMagic());
-            this.valorDefensa -= (baston.GetMagic()/2);
+            this.Inventario.Remove(baston);
+            this.ValorMagia -= baston.ValorMagia;
+            this.ValorAtaque -= (baston.ValorMagia);
+            this.ValorDefensa -= (baston.ValorMagia/2);
         }
     }
     public void QuitarLibroHechizos(LibroDeHechizos libro)
     {
-        int aux = this.items.IndexOf(libro);
+        int aux = this.Inventario.IndexOf(libro);
         if (aux != 1)
         {
-            this.items.Remove(libro);
-            this.valorMagia -= 2 * (libro.GetNumeroHechizos());
-            this.valorAtaque -= 2 * (libro.GetNumeroHechizos());
-            this.valorDefensa -= libro.GetNumeroHechizos();
+            this.Inventario.Remove(libro);
+            this.ValorMagia -= 2 * (libro.GetNumeroHechizos());
+            this.ValorAtaque -= 2 * (libro.GetNumeroHechizos());
+            this.ValorDefensa -= libro.GetNumeroHechizos();
         }
     }
     public void QuitarTunicaDeCuero(TunicaDeCuero tunica)
     {
-        int aux = this.items.IndexOf(tunica);
+        int aux = this.Inventario.IndexOf(tunica);
         if (aux != 1)
         {
-            this.items.Remove(tunica);
-            this.valorDefensa -= tunica.GetDefense();
-            this.valorMagia -= tunica.GetMagic();
-            this.valorAtaque -= (tunica.GetMagic());
-            this.valorDefensa -= (tunica.GetMagic()/2);
+            this.Inventario.Remove(tunica);
+            this.ValorDefensa -= tunica.ValorDefensa;
+            this.ValorMagia -= tunica.ValorMagia;
+            this.ValorAtaque -= (tunica.ValorMagia);
+            this.ValorDefensa -= (tunica.ValorMagia/2);
         }
     }
 }
