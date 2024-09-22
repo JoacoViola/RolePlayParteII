@@ -21,6 +21,7 @@ public class Enano : IPersonaje
         this.ValorMagia = 0;
         this.ValorAtaque = 25;
         this.ValorDefensa = 30;
+        this.Inventario = new List<IItem>();
     }
 
     //Ser atacado

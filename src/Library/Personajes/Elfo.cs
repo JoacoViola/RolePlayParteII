@@ -22,6 +22,7 @@ public class Elfo : IPersonaje
         this.ValorMagia = 10;
         this.ValorAtaque = 15 + ValorMagia;
         this.ValorDefensa = 20 + ValorMagia/2;
+        this.Inventario = new List<IItem>();
     }
     
     

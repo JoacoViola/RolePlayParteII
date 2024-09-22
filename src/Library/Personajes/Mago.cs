@@ -20,6 +20,7 @@ public class Mago : IPersonaje
         this.ValorMagia = 25;
         this.ValorAtaque = 10 + ValorMagia;
         this.ValorDefensa = 10 + ValorMagia/2;
+        this.Inventario = new List<IItem>();
     }
     
     //Ser atacado

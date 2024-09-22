@@ -37,7 +37,7 @@ public class TestEnano
         Assert.That(enano.ValorAtaque, Is.EqualTo(100)); // le suma 75
         Assert.That(enano.ValorDefensa, Is.EqualTo(30)); // no debería cambiar
         enano.QuitarHachaDeCombate(hacha);
-        Assert.That(enano.Inventario, Is.EqualTo(null)); // el inventario queda vacío
+        Assert.That(enano.Inventario.Count, Is.EqualTo(0)); // el inventario queda vacío
         Assert.That(enano.ValorMagia, Is.EqualTo(0)); // vuelve al valor inicial
         Assert.That(enano.ValorAtaque, Is.EqualTo(25)); // vuelve al valor inicial
         Assert.That(enano.ValorDefensa, Is.EqualTo(30)); // vuelve al valor inicial
@@ -53,7 +53,7 @@ public class TestEnano
         Assert.That(enano.ValorAtaque, Is.EqualTo(115)); // le suma 90
         Assert.That(enano.ValorDefensa, Is.EqualTo(50)); // le suma 20
         enano.QuitarMartilloPesado(martillo);
-        Assert.That(enano.Inventario, Is.EqualTo(null)); // el inventario queda vacío
+        Assert.That(enano.Inventario.Count, Is.EqualTo(0)); // el inventario queda vacío
         Assert.That(enano.ValorMagia, Is.EqualTo(0)); // vuelve al valor inicial
         Assert.That(enano.ValorAtaque, Is.EqualTo(25)); // vuelve al valor inicial
         Assert.That(enano.ValorDefensa, Is.EqualTo(30)); // vuelve al valor inicial
@@ -69,7 +69,7 @@ public class TestEnano
         Assert.That(enano.ValorAtaque, Is.EqualTo(25)); // no debería cambiar
         Assert.That(enano.ValorDefensa, Is.EqualTo(110)); // le suma 80
         enano.QuitarArmaduraDeHierro(armadura);
-        Assert.That(enano.Inventario, Is.EqualTo(null)); // el inventario queda vacío
+        Assert.That(enano.Inventario.Count, Is.EqualTo(0)); // el inventario queda vacío
         Assert.That(enano.ValorMagia, Is.EqualTo(0)); // vuelve al valor inicial
         Assert.That(enano.ValorAtaque, Is.EqualTo(25)); // vuelve al valor inicial
         Assert.That(enano.ValorDefensa, Is.EqualTo(30)); // vuelve al valor inicial

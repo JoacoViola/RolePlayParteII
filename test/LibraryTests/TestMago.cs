@@ -37,7 +37,7 @@ public class TestMago
         Assert.That(mago.ValorAtaque, Is.EqualTo(105)); // le suma 70 (magia)
         Assert.That(mago.ValorDefensa, Is.EqualTo(57)); // le suma 35 (mitad de la magia)
         mago.QuitarBastonMagico(baston);
-        //Assert.That(mago.GetItemCount(),Is.EqualTo(0)); // el inventario queda vacío
+        Assert.That(mago.Inventario.Count, Is.EqualTo(0)); // el inventario queda vacío
         Assert.That(mago.ValorMagia, Is.EqualTo(25));   // vuelve al valor inicial
         Assert.That(mago.ValorAtaque, Is.EqualTo(35));  // vuelve al valor inicial
         Assert.That(mago.ValorDefensa, Is.EqualTo(22)); // vuelve al valor inicial
@@ -58,7 +58,7 @@ public class TestMago
         Assert.That(mago.ValorAtaque, Is.EqualTo(45));  // le suma 10 (magia)
         Assert.That(mago.ValorDefensa, Is.EqualTo(27)); // le suma 5 (mitad de la magia)
         mago.QuitarLibroHechizos(libro);
-        //Assert.That(mago.GetItemCount(),Is.EqualTo(0)); // el inventario queda vacío
+        Assert.That(mago.Inventario.Count, Is.EqualTo(0)); // el inventario queda vacío
         Assert.That(mago.ValorMagia, Is.EqualTo(25));   // vuelve al valor inicial
         Assert.That(mago.ValorAtaque, Is.EqualTo(35));  // vuelve al valor inicial
         Assert.That(mago.ValorDefensa, Is.EqualTo(22)); // vuelve al valor inicial
@@ -74,8 +74,8 @@ public class TestMago
         Assert.That(mago.ValorMagia, Is.EqualTo(45));   // le suma 20
         Assert.That(mago.ValorAtaque, Is.EqualTo(55));  // le suma 20 (magia)
         Assert.That(mago.ValorDefensa, Is.EqualTo(72)); // le suma 10 (mitad de la magia)
-        mago.QuitarTunicaDeCuero(tunica);
-        //Assert.That(mago.GetItemCount(),Is.EqualTo(0)); // el inventario queda vacío
+        mago.QuitarTunicaDeCuero(tunica); 
+        Assert.That(mago.Inventario.Count, Is.EqualTo(0)); // el inventario queda vacío
         Assert.That(mago.ValorMagia, Is.EqualTo(25));   // vuelve al valor inicial
         Assert.That(mago.ValorAtaque, Is.EqualTo(35));  // vuelve al valor inicial
         Assert.That(mago.ValorDefensa, Is.EqualTo(22)); // vuelve al valor inicial

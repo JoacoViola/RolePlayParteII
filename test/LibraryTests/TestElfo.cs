@@ -38,7 +38,7 @@ public class TestElfo
         Assert.That(elfo.ValorAtaque, Is.EqualTo(105)); // le suma 60 + 20 (magia)
         Assert.That(elfo.ValorDefensa, Is.EqualTo(35)); // le suma 10 (mitad de la magia)
         elfo.QuitarArcoMagico(arco);
-        //Assert.That(elfo.GetItemCount(),Is.EqualTo(0)); // el inventario queda vacío
+        Assert.That(elfo.Inventario.Count, Is.EqualTo(0)); // el inventario queda vacío
         Assert.That(elfo.ValorMagia, Is.EqualTo(10));   // vuelve al valor inicial
         Assert.That(elfo.ValorAtaque, Is.EqualTo(25));  // vuelve al valor inicial
         Assert.That(elfo.ValorDefensa, Is.EqualTo(25)); // vuelve al valor inicial
@@ -54,7 +54,7 @@ public class TestElfo
         Assert.That(elfo.ValorAtaque, Is.EqualTo(90));  // le suma 65
         Assert.That(elfo.ValorDefensa, Is.EqualTo(25)); // no deberia cambiar
         elfo.QuitarCuchillasDobles(cuchilla);
-        //Assert.That(elfo.GetItemCount(),Is.EqualTo(0)); // el inventario queda vacío
+        Assert.That(elfo.Inventario.Count, Is.EqualTo(0)); // el inventario queda vacío
         Assert.That(elfo.ValorMagia, Is.EqualTo(10));   // vuelve al valor inicial
         Assert.That(elfo.ValorAtaque, Is.EqualTo(25));  // vuelve al valor inicial
         Assert.That(elfo.ValorDefensa, Is.EqualTo(25)); // vuelve al valor inicial
@@ -70,7 +70,7 @@ public class TestElfo
         Assert.That(elfo.ValorAtaque, Is.EqualTo(35));  // le suma 10 (magia)
         Assert.That(elfo.ValorDefensa, Is.EqualTo(85)); // le suma 55 + 5 (mitad de la magia)
         elfo.QuitarArmaduraDelBosque(armadura);
-        //Assert.That(elfo.GetItemCount(),Is.EqualTo(0)); // el inventario queda vacío
+        Assert.That(elfo.Inventario.Count, Is.EqualTo(0)); // el inventario queda vacío
         Assert.That(elfo.ValorMagia, Is.EqualTo(10));   // vuelve al valor inicial
         Assert.That(elfo.ValorAtaque, Is.EqualTo(25));  // vuelve al valor inicial
         Assert.That(elfo.ValorDefensa, Is.EqualTo(25)); // vuelve al valor inicial
