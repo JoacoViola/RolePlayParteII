@@ -15,14 +15,14 @@ gimli.AgregarHachaDeCombate(new HachaDeCombate());
 gimli.AgregarArmaduraDeHierro(new ArmaduraDeHierro());
 
 
-Console.WriteLine($"Gimli has ❤️ {gimli.GetHealth()}");
-Console.WriteLine($"Gandalf attacks Gimli with ⚔️ {gandalf.GetDamage()}");
+Console.WriteLine($"Gimli has ❤️ {gimli.ValorVida}");
+Console.WriteLine($"Gandalf attacks Gimli with ⚔️ {gandalf.ValorAtaque}");
 
-gimli.SufrirDaño(gandalf.GetDamage());
+gimli.SufrirDaño(gandalf.ValorAtaque);
 
-Console.WriteLine($"Gimli has ❤️ {gimli.GetHealth()}");
+Console.WriteLine($"Gimli has ❤️ {gimli.ValorVida}");
 
 gimli.RecuperarVida(50);
 
-Console.WriteLine($"Gimli has ❤️ {gimli.GetHealth()}");
+Console.WriteLine($"Gimli has ❤️ {gimli.ValorVida}");
 
