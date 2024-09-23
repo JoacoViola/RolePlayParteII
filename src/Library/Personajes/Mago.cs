@@ -1,6 +1,5 @@
 ﻿using Library.Items;
-using Library.Items.Armaduras_o_Ropajes;
-using Library.Items.Armas_o_Artefactos;
+
 namespace Library.Personajes;
 
 public class Mago : IPersonaje
@@ -36,63 +35,29 @@ public class Mago : IPersonaje
         this.ValorVida += vida;
     }
 
-   //Agregar Items al Inventario
-    public void AgregarBastonMagico(BastonMagico baston)
+    //Agregar Items al Inventario
+    public void AgregarItem(IItem item)     // No tiene restricciones, puede aceptar cualquier item
     {
-        this.Inventario.Add(baston);
-        this.ValorMagia += baston.ValorMagia;
-        this.ValorAtaque += baston.ValorMagia;
-        this.ValorDefensa += baston.ValorMagia/2;
+        this.Inventario.Add(item); 
+        this.ValorMagia += item.ValorMagia;
+        this.ValorAtaque += item.ValorAtaque + item.ValorMagia;
+        this.ValorDefensa += item.ValorDefensa + item.ValorMagia/2;
     }
-    public void AgregarLibroDeHechizos(LibroDeHechizos libro)
-    {
-        this.Inventario.Add(libro);
-        this.ValorMagia += libro.ValorMagia; 
-        this.ValorAtaque += libro.ValorMagia;
-        this.ValorDefensa += libro.ValorMagia/2; 
-    }
-    public void AgregarTunicaDeCuero(TunicaDeCuero tunica)
-    {
-        this.Inventario.Add(tunica);
-        this.ValorDefensa += tunica.ValorDefensa;
-        this.ValorMagia += tunica.ValorMagia;
-        this.ValorAtaque += tunica.ValorMagia;
-        this.ValorDefensa += tunica.ValorMagia/2;
-    }
-    
+
     //Remover Items del Inventario
-    public void QuitarBastonMagico(BastonMagico baston)
+    public void QuitarItem(IItem item)
     {
-        int aux = this.Inventario.IndexOf(baston);
+        int aux = this.Inventario.IndexOf(item);
         if (aux != 1)
         {
-            this.Inventario.Remove(baston);
-            this.ValorMagia -= baston.ValorMagia;
-            this.ValorAtaque -= (baston.ValorMagia);
-            this.ValorDefensa -= (baston.ValorMagia/2);
+            this.Inventario.Remove(item);
+            this.ValorMagia -= item.ValorMagia;
+            this.ValorAtaque -= item.ValorAtaque + item.ValorMagia;
+            this.ValorDefensa -= item.ValorDefensa + item.ValorMagia/2;
         }
-    }
-    public void QuitarLibroHechizos(LibroDeHechizos libro)
-    {
-        int aux = this.Inventario.IndexOf(libro);
-        if (aux != 1)
+        else
         {
-            this.Inventario.Remove(libro);
-            this.ValorMagia -= libro.ValorMagia; 
-            this.ValorAtaque -= libro.ValorMagia;
-            this.ValorDefensa -= libro.ValorMagia/2; 
-        }
-    }
-    public void QuitarTunicaDeCuero(TunicaDeCuero tunica)
-    {
-        int aux = this.Inventario.IndexOf(tunica);
-        if (aux != 1)
-        {
-            this.Inventario.Remove(tunica);
-            this.ValorDefensa -= tunica.ValorDefensa;
-            this.ValorMagia -= tunica.ValorMagia;
-            this.ValorAtaque -= (tunica.ValorMagia);
-            this.ValorDefensa -= (tunica.ValorMagia/2);
+            Console.WriteLine("El item no está en el inventario");
         }
     }
 }

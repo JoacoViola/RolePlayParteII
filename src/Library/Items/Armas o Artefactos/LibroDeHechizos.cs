@@ -1,8 +1,8 @@
-using System.Collections;
 namespace Library.Items.Armas_o_Artefactos;
 
 public class LibroDeHechizos : IItem
 {
+    public bool EsMagico { get; }
     public int ValorAtaque { get; }
     public int ValorDefensa { get; }
     public int ValorMagia { get; set; }
@@ -36,6 +36,7 @@ public class LibroDeHechizos : IItem
     //Constructor
     public LibroDeHechizos()
     {
+        this.EsMagico = true; 
         this.listaDeHechizos = new List<Hechizo>();
         this.ValorAtaque = 0; 
         this.ValorDefensa= 0;

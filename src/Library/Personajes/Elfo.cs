@@ -1,6 +1,5 @@
 ﻿using Library.Items;
-using Library.Items.Armaduras_o_Ropajes;
-using Library.Items.Armas_o_Artefactos;
+
 namespace Library.Personajes;
 
 public class Elfo : IPersonaje
@@ -23,7 +22,6 @@ public class Elfo : IPersonaje
         this.Inventario = new List<IItem>();
     }
     
-    
     //Ser atacado
     public void SufrirDaño(int daño)
     {
@@ -37,61 +35,36 @@ public class Elfo : IPersonaje
         this.ValorVida += vida;
     }
 
-   //Agregar Items al Inventario
-    public void AgregarArcoMagico(ArcoMagico arco)
+    //Agregar Items al Inventario
+    public void AgregarItem(IItem item)
     {
-        this.Inventario.Add(arco);
-        this.ValorAtaque += arco.ValorAtaque;
-        this.ValorMagia += arco.ValorMagia;
-        this.ValorAtaque += arco.ValorMagia;
-        this.ValorDefensa += arco.ValorMagia/2;
+        if (item.EsMagico)      // Tiene la restricción de no poder portar items mágicos
+        {
+            Console.WriteLine("Este personaje no puede usar objetos mágicos");
+        }
+        else
+        {
+            this.Inventario.Add(item);
+            this.ValorMagia += item.ValorMagia;
+            this.ValorAtaque += item.ValorAtaque + item.ValorMagia;
+            this.ValorDefensa += item.ValorDefensa + item.ValorMagia/2;
+        }
     }
-    public void AgregarCuchillasDoble(CuchillasDobles cuchillas)
-    {
-        this.Inventario.Add(cuchillas);
-        this.ValorAtaque += cuchillas.ValorAtaque;
-    }
-    public void AgregarArmaduraDelBosque(ArmaduraDelBosque armadura)
-    {
-        this.Inventario.Add(armadura);
-        this.ValorDefensa += armadura.ValorDefensa;
-        this.ValorMagia += armadura.ValorMagia;
-        this.ValorAtaque += armadura.ValorMagia;
-        this.ValorDefensa += armadura.ValorMagia/2;
-    }
-    
+
     //Remover Items del Inventario
-    public void QuitarArcoMagico(ArcoMagico arco)
+    public void QuitarItem(IItem item)
     {
-        int aux = this.Inventario.IndexOf(arco);
+        int aux = this.Inventario.IndexOf(item);
         if (aux != 1)
         {
-            this.Inventario.Remove(arco);
-            this.ValorMagia -= arco.ValorMagia;
-            this.ValorAtaque -= arco.ValorAtaque;
-            this.ValorAtaque -= arco.ValorMagia;
-            this.ValorDefensa -= arco.ValorMagia/2;
+            this.Inventario.Remove(item);
+            this.ValorMagia -= item.ValorMagia;
+            this.ValorAtaque -= item.ValorAtaque + item.ValorMagia;
+            this.ValorDefensa -= item.ValorDefensa + item.ValorMagia/2;
         }
-    }
-    public void QuitarCuchillasDobles(CuchillasDobles cuchillas)
-    {
-        int aux = this.Inventario.IndexOf(cuchillas);
-        if (aux != 1)
+        else
         {
-            this.Inventario.Remove(cuchillas);
-            this.ValorAtaque -= cuchillas.ValorAtaque;
-        }
-    }
-    public void QuitarArmaduraDelBosque(ArmaduraDelBosque armadura)
-    {
-        int aux = this.Inventario.IndexOf(armadura);
-        if (aux != 1)
-        {
-            this.Inventario.Remove(armadura);
-            this.ValorDefensa -= armadura.ValorDefensa;
-            this.ValorMagia -= armadura.ValorMagia;
-            this.ValorAtaque -= (armadura.ValorMagia);
-            this.ValorDefensa -= (armadura.ValorMagia/2);
+            Console.WriteLine("El item no está en el inventario");
         }
     }
 }

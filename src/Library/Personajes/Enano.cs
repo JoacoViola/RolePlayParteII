@@ -1,6 +1,4 @@
 ﻿using Library.Items;
-using Library.Items.Armaduras_o_Ropajes;
-using Library.Items.Armas_o_Artefactos;
 namespace Library.Personajes;
 
 public class Enano : IPersonaje
@@ -36,51 +34,36 @@ public class Enano : IPersonaje
         this.ValorVida += vida;
     }
 
-   //Agregar Items al Inventario
-    public void AgregarHachaDeCombate(HachaDeCombate hacha)
+    //Agregar Items al Inventario
+    public void AgregarItem(IItem item)
     {
-        this.Inventario.Add(hacha);
-        this.ValorAtaque += hacha.ValorAtaque;
+        if (item.EsMagico)      // Tiene la restricción de no poder portar items mágicos
+        {
+            Console.WriteLine("Este personaje no puede usar objetos mágicos");
+        }
+        else
+        {
+            this.Inventario.Add(item);
+            this.ValorMagia += item.ValorMagia;
+            this.ValorAtaque += item.ValorAtaque + item.ValorMagia;
+            this.ValorDefensa += item.ValorDefensa + item.ValorMagia/2;
+        }
     }
-    public void AgregarMartilloPesado(MartilloPesado martillo)
-    {
-        this.Inventario.Add(martillo);
-        this.ValorAtaque += martillo.ValorAtaque;
-        this.ValorDefensa += martillo.ValorDefensa;
-    }
-    public void AgregarArmaduraDeHierro(ArmaduraDeHierro armadura)
-    {
-        this.Inventario.Add(armadura);
-        this.ValorDefensa += armadura.ValorDefensa;
-    }
-    
+
     //Remover Items del Inventario
-    public void QuitarHachaDeCombate(HachaDeCombate hacha)
+    public void QuitarItem(IItem item)
     {
-        int aux = this.Inventario.IndexOf(hacha);
+        int aux = this.Inventario.IndexOf(item);
         if (aux != 1)
         {
-            this.Inventario.Remove(hacha);
-            this.ValorAtaque -= hacha.ValorAtaque;
+            this.Inventario.Remove(item);
+            this.ValorMagia -= item.ValorMagia;
+            this.ValorAtaque -= item.ValorAtaque + item.ValorMagia;
+            this.ValorDefensa -= item.ValorDefensa + item.ValorMagia/2;
         }
-    }
-    public void QuitarMartilloPesado(MartilloPesado martillo)
-    {
-        int aux = this.Inventario.IndexOf(martillo);
-        if (aux != 1)
+        else
         {
-            this.Inventario.Remove(martillo);
-            this.ValorAtaque -= martillo.ValorAtaque;
-            this.ValorDefensa -= martillo.ValorDefensa;
-        }
-    }
-    public void QuitarArmaduraDeHierro(ArmaduraDeHierro armadura)
-    {
-        int aux = this.Inventario.IndexOf(armadura);
-        if (aux != 1)
-        {
-            this.Inventario.Remove(armadura);
-            this.ValorDefensa -= armadura.ValorDefensa;
+            Console.WriteLine("El item no está en el inventario");
         }
     }
 }

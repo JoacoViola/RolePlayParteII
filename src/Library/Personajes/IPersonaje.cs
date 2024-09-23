@@ -11,5 +11,6 @@ public interface IPersonaje
     List<IItem> Inventario { get; }
     void SufrirDaño(int daño);
     void RecuperarVida(int vida);
-    
+    void AgregarItem(IItem item);
+    void QuitarItem(IItem item);
 }

@@ -1,17 +1,19 @@
 namespace Library.Items.Armas_o_Artefactos;
 
-public class ArcoMagico : IItem
+public class Arco : IItem
 {
+    public bool EsMagico { get; }
     public int ValorAtaque { get; }
     public int ValorDefensa { get; }
     public int ValorMagia { get; }
     
     
     //Construtor
-    public ArcoMagico() 
+    public Arco() 
     {
+        this.EsMagico = false;
         this.ValorAtaque = 60; 
-        this.ValorMagia = 20;
+        this.ValorMagia = 0;
         this.ValorDefensa= 0;
     }
 
