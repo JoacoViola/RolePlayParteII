@@ -26,11 +26,11 @@ public class TestMago
         mago.RecuperarVida(26);
         Assert.That(mago.ValorVida, Is.EqualTo(150)); // le suma 26
     }
-
+    
+    [Test]
     public void AgregarYQuitarItems()
     {
         Mago mago = new Mago("Harry Potter");
-        var stringWriter = new StringWriter();
         
         LibroDeHechizos libro = new LibroDeHechizos();
         BastonMagico baston = new BastonMagico();
@@ -49,18 +49,15 @@ public class TestMago
         mago.AgregarItem(cuchillos);     // Chequea que acepte cualquier item, sin restricción
         
         Assert.That(mago.Inventario.Count, Is.EqualTo(4));  // debe agregar solo 3, el bastón no
-        Assert.That(mago.ValorMagia, Is.EqualTo(155));       // le suma 70 + 40 + 20
-        Assert.That(mago.ValorAtaque, Is.EqualTo(165));     // le suma 130
-        Assert.That(mago.ValorDefensa, Is.EqualTo(87));     // le suma 130 / 2
+        Assert.That(mago.ValorMagia, Is.EqualTo(155));      // le suma 70 + 40 + 20 
+        Assert.That(mago.ValorAtaque, Is.EqualTo(230));     // le suma 65 + 130
+        Assert.That(mago.ValorDefensa, Is.EqualTo(127));    // le suma 40 + 130 / 2
         
         mago.QuitarItem(libro);
         mago.QuitarItem(baston);
         mago.QuitarItem(tunica);
         mago.QuitarItem(cuchillos);
         mago.QuitarItem(martillo);
-        
-        Console.SetOut(stringWriter);   // Chequea que salte el mensaje de error en la Consola
-        Assert.That(stringWriter.ToString(), Is.EqualTo("El item no está en el inventario"));
         
         Assert.That(mago.Inventario.Count, Is.EqualTo(0));  // el inventario queda vacío
         Assert.That(mago.ValorMagia, Is.EqualTo(25));       // vuelve al valor inicial

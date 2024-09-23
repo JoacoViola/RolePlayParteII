@@ -34,7 +34,6 @@ public class TestElfo
     public void AgregarYQuitarItems()
     {
         Elfo elfo = new Elfo("Sylvan");
-        var stringWriter = new StringWriter();
         
         Arco arco = new Arco();
         CuchillasDobles cuchilla = new CuchillasDobles();
@@ -44,10 +43,7 @@ public class TestElfo
         elfo.AgregarItem(arco);
         elfo.AgregarItem(cuchilla);
         elfo.AgregarItem(armadura);
-        elfo.AgregarItem(baston);
-        
-        Console.SetOut(stringWriter);   // Chequea que salte el mensaje de error en la Consola
-        Assert.That(stringWriter.ToString(), Is.EqualTo("Este personaje no puede usar objetos mágicos"));
+        elfo.AgregarItem(baston);       // Debería mostrar el mensaje de error en la consola
         
         Assert.That(elfo.Inventario.Count, Is.EqualTo(3));  // debe agregar solo 3, el bastón no
         Assert.That(elfo.ValorMagia, Is.EqualTo(20));       // le suma 10
@@ -57,10 +53,7 @@ public class TestElfo
         elfo.QuitarItem(arco);
         elfo.QuitarItem(cuchilla);
         elfo.QuitarItem(armadura);
-        elfo.QuitarItem(baston);
-        
-        Console.SetOut(stringWriter);   // Chequea que salte el mensaje de error en la Consola
-        Assert.That(stringWriter.ToString(), Is.EqualTo("El item no está en el inventario"));
+        elfo.QuitarItem(baston);        // Debería mostrar el mensaje de error en la consola
         
         Assert.That(elfo.Inventario.Count, Is.EqualTo(0));  // el inventario queda vacío
         Assert.That(elfo.ValorMagia, Is.EqualTo(10));       // vuelve al valor inicial

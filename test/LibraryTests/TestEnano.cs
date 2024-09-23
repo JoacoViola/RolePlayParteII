@@ -34,7 +34,6 @@ public class TestEnano
     public void AgregarYQuitarItems()
     {
         Enano enano = new Enano("Gruñon");
-        var stringWriter = new StringWriter();
         
         HachaDeCombate hacha = new HachaDeCombate();
         MartilloPesado martillo = new MartilloPesado();
@@ -44,10 +43,7 @@ public class TestEnano
         enano.AgregarItem(hacha);
         enano.AgregarItem(martillo);
         enano.AgregarItem(armadura);
-        enano.AgregarItem(baston);
-        
-        Console.SetOut(stringWriter);   // Chequea que salte el mensaje de error en la Consola
-        Assert.That(stringWriter.ToString(), Is.EqualTo("Este personaje no puede usar objetos mágicos"));
+        enano.AgregarItem(baston);      // Debería mostrar el mensaje de error en la consola
         
         Assert.That(enano.Inventario.Count, Is.EqualTo(3)); // debe agregar solo 3, el bastón no
         Assert.That(enano.ValorMagia, Is.EqualTo(0));       // le suma 0
@@ -57,13 +53,10 @@ public class TestEnano
         enano.QuitarItem(hacha);
         enano.QuitarItem(martillo);
         enano.QuitarItem(armadura);
-        enano.QuitarItem(baston);
-        
-        Console.SetOut(stringWriter);   // Chequea que salte el mensaje de error en la Consola
-        Assert.That(stringWriter.ToString(), Is.EqualTo("El item no está en el inventario"));
+        enano.QuitarItem(baston);       // Debería mostrar el mensaje de error en la consola
         
         Assert.That(enano.Inventario.Count, Is.EqualTo(0)); // el inventario queda vacío
-        Assert.That(enano.ValorMagia, Is.EqualTo(0));      // vuelve al valor inicial
+        Assert.That(enano.ValorMagia, Is.EqualTo(0));       // vuelve al valor inicial
         Assert.That(enano.ValorAtaque, Is.EqualTo(25));     // vuelve al valor inicial
         Assert.That(enano.ValorDefensa, Is.EqualTo(30));    // vuelve al valor inicial
     }

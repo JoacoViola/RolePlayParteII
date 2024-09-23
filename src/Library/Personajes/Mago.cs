@@ -48,7 +48,7 @@ public class Mago : IPersonaje
     public void QuitarItem(IItem item)
     {
         int aux = this.Inventario.IndexOf(item);
-        if (aux != 1)
+        if (aux != -1)
         {
             this.Inventario.Remove(item);
             this.ValorMagia -= item.ValorMagia;
