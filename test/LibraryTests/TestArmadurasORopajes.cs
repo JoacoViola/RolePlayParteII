@@ -10,6 +10,8 @@ public class TestArmadurasORopajes
         TunicaDeCuero tunica = new TunicaDeCuero();
         Assert.That(tunica.ValorMagia, Is.EqualTo(20));
         Assert.That(tunica.ValorDefensa, Is.EqualTo(40));
+        Assert.That(tunica.ValorAtaque, Is.EqualTo(0));
+        Assert.That(tunica.EsMagico, Is.EqualTo(true));
     }
     
     [Test]
@@ -18,6 +20,8 @@ public class TestArmadurasORopajes
         ArmaduraDelBosque armadura = new ArmaduraDelBosque();
         Assert.That(armadura.ValorMagia, Is.EqualTo(10));
         Assert.That(armadura.ValorDefensa, Is.EqualTo(55));
+        Assert.That(armadura.ValorAtaque, Is.EqualTo(0));
+        Assert.That(armadura.EsMagico, Is.EqualTo(false));
     }
     
     [Test]
@@ -25,5 +29,7 @@ public class TestArmadurasORopajes
     {
         ArmaduraDeHierro armadura = new ArmaduraDeHierro();
         Assert.That(armadura.ValorDefensa, Is.EqualTo(80));
+        Assert.That(armadura.ValorAtaque, Is.EqualTo(0));
+        Assert.That(armadura.EsMagico, Is.EqualTo(false));
     }
 }
