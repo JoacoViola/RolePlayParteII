@@ -1,4 +1,3 @@
-using Library.Items;
 using Library.Items.Armaduras_o_Ropajes;
 using Library.Items.Armas_o_Artefactos;
 using Library.Personajes;
@@ -11,6 +10,7 @@ public class TestElfo
     public void TestDeConstructorYGetters()
     {
         Elfo elfo = new Elfo("Sylvan");
+        
         Assert.That(elfo.Nombre, Is.EqualTo("Sylvan"));
         Assert.That(elfo.ValorVida, Is.EqualTo(200));
         Assert.That(elfo.ValorMagia, Is.EqualTo(10));
@@ -22,57 +22,49 @@ public class TestElfo
     public void ElfoAtacadoYCurado()
     {
         Elfo elfo = new Elfo("Sylvan");
+        
         elfo.SufrirDaño(50);
         Assert.That(elfo.ValorVida, Is.EqualTo(155)); // le resta 45 por la defensa
+        
         elfo.RecuperarVida(20);
         Assert.That(elfo.ValorVida, Is.EqualTo(175)); // le suma 20
     }
 
     [Test]
-    public void AgregarYQuitarArcoMagico()
+    public void AgregarYQuitarItems()
     {
         Elfo elfo = new Elfo("Sylvan");
-        ArcoMagico arco = new ArcoMagico();
-        elfo.AgregarArcoMagico(arco);
-        Assert.That(elfo.ValorMagia, Is.EqualTo(30));   // le suma 20 
-        Assert.That(elfo.ValorAtaque, Is.EqualTo(105)); // le suma 60 + 20 (magia)
-        Assert.That(elfo.ValorDefensa, Is.EqualTo(35)); // le suma 10 (mitad de la magia)
-        elfo.QuitarArcoMagico(arco);
-        Assert.That(elfo.Inventario.Count, Is.EqualTo(0)); // el inventario queda vacío
-        Assert.That(elfo.ValorMagia, Is.EqualTo(10));   // vuelve al valor inicial
-        Assert.That(elfo.ValorAtaque, Is.EqualTo(25));  // vuelve al valor inicial
-        Assert.That(elfo.ValorDefensa, Is.EqualTo(25)); // vuelve al valor inicial
-    }
-    
-    [Test]
-    public void AgregarYQuitarCuchillasDobles()
-    {
-        Elfo elfo = new Elfo("Sylvan");
+        var stringWriter = new StringWriter();
+        
+        Arco arco = new Arco();
         CuchillasDobles cuchilla = new CuchillasDobles();
-        elfo.AgregarCuchillasDoble(cuchilla);
-        Assert.That(elfo.ValorMagia, Is.EqualTo(10));   // no deberia cambiar 
-        Assert.That(elfo.ValorAtaque, Is.EqualTo(90));  // le suma 65
-        Assert.That(elfo.ValorDefensa, Is.EqualTo(25)); // no deberia cambiar
-        elfo.QuitarCuchillasDobles(cuchilla);
-        Assert.That(elfo.Inventario.Count, Is.EqualTo(0)); // el inventario queda vacío
-        Assert.That(elfo.ValorMagia, Is.EqualTo(10));   // vuelve al valor inicial
-        Assert.That(elfo.ValorAtaque, Is.EqualTo(25));  // vuelve al valor inicial
-        Assert.That(elfo.ValorDefensa, Is.EqualTo(25)); // vuelve al valor inicial
-    }
-    
-    [Test]
-    public void AgregarYQuitarArmaduraDelBosque()
-    {
-        Elfo elfo = new Elfo("Sylvan");
         ArmaduraDelBosque armadura = new ArmaduraDelBosque();
-        elfo.AgregarArmaduraDelBosque(armadura);
-        Assert.That(elfo.ValorMagia, Is.EqualTo(20));   // le suma 10 
-        Assert.That(elfo.ValorAtaque, Is.EqualTo(35));  // le suma 10 (magia)
-        Assert.That(elfo.ValorDefensa, Is.EqualTo(85)); // le suma 55 + 5 (mitad de la magia)
-        elfo.QuitarArmaduraDelBosque(armadura);
-        Assert.That(elfo.Inventario.Count, Is.EqualTo(0)); // el inventario queda vacío
-        Assert.That(elfo.ValorMagia, Is.EqualTo(10));   // vuelve al valor inicial
-        Assert.That(elfo.ValorAtaque, Is.EqualTo(25));  // vuelve al valor inicial
-        Assert.That(elfo.ValorDefensa, Is.EqualTo(25)); // vuelve al valor inicial
+        BastonMagico baston = new BastonMagico();
+        
+        elfo.AgregarItem(arco);
+        elfo.AgregarItem(cuchilla);
+        elfo.AgregarItem(armadura);
+        elfo.AgregarItem(baston);
+        
+        Console.SetOut(stringWriter);   // Chequea que salte el mensaje de error en la Consola
+        Assert.That(stringWriter.ToString(), Is.EqualTo("Este personaje no puede usar objetos mágicos"));
+        
+        Assert.That(elfo.Inventario.Count, Is.EqualTo(3));  // debe agregar solo 3, el bastón no
+        Assert.That(elfo.ValorMagia, Is.EqualTo(20));       // le suma 10
+        Assert.That(elfo.ValorAtaque, Is.EqualTo(160));     // le suma 60 + 65 + 10
+        Assert.That(elfo.ValorDefensa, Is.EqualTo(85));     // le suma 55 + 5
+        
+        elfo.QuitarItem(arco);
+        elfo.QuitarItem(cuchilla);
+        elfo.QuitarItem(armadura);
+        elfo.QuitarItem(baston);
+        
+        Console.SetOut(stringWriter);   // Chequea que salte el mensaje de error en la Consola
+        Assert.That(stringWriter.ToString(), Is.EqualTo("El item no está en el inventario"));
+        
+        Assert.That(elfo.Inventario.Count, Is.EqualTo(0));  // el inventario queda vacío
+        Assert.That(elfo.ValorMagia, Is.EqualTo(10));       // vuelve al valor inicial
+        Assert.That(elfo.ValorAtaque, Is.EqualTo(25));      // vuelve al valor inicial
+        Assert.That(elfo.ValorDefensa, Is.EqualTo(25));     // vuelve al valor inicial
     }
 }

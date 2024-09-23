@@ -6,13 +6,13 @@ LibroDeHechizos book = new LibroDeHechizos();
 book.AgregarHechizo(new Hechizo("Relámpago", 20));
 
 Mago gandalf = new Mago("Gandalf");
-gandalf.AgregarBastonMagico(new BastonMagico());
-gandalf.AgregarLibroDeHechizos(book);
+gandalf.AgregarItem(new BastonMagico());
+gandalf.AgregarItem(book);
 
 Enano gimli = new Enano("Gimli");
-gimli.AgregarMartilloPesado(new MartilloPesado());
-gimli.AgregarHachaDeCombate(new HachaDeCombate());
-gimli.AgregarArmaduraDeHierro(new ArmaduraDeHierro());
+gimli.AgregarItem(new MartilloPesado());
+gimli.AgregarItem(new HachaDeCombate());
+gimli.AgregarItem(new ArmaduraDeHierro());
 
 
 Console.WriteLine($"Gimli has ❤️ {gimli.ValorVida}");
